@@ -7,6 +7,8 @@ import io.github.ayfri.kore.dataPack
 import io.github.ayfri.kore.pack.pack
 import kotlin.io.path.Path
 
+const val NAMESPACE = "ore_crops"
+
 fun main() {
 	val dataPack = dataPack("OreCrops") {
 		pack {
@@ -23,6 +25,5 @@ fun main() {
 		}
 		orePlantsItems()
 	}
-	println(Seeds("diamond").asString())
 	dataPack.generate()
 }

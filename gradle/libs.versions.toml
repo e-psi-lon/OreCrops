@@ -1,0 +1,10 @@
+[versions]
+kotlin = "2.1.0"
+kore = "1.21.0-24w39a"
+
+[libraries]
+kore = {group="io.github.ayfri.kore", name="kore", version.ref="kore"}
+
+
+[plugins]
+kotlin-jvm = {id="org.jetbrains.kotlin.jvm", version.ref="kotlin"}

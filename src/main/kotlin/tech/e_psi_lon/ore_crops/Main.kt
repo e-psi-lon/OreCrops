@@ -1,4 +1,4 @@
-package tech.e_psi_lon
+package tech.e_psi_lon.ore_crops
 
 import io.github.ayfri.kore.arguments.chatcomponents.textComponent
 import io.github.ayfri.kore.arguments.colors.Color

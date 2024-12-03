@@ -1,4 +1,4 @@
-package tech.e_psi_lon
+package tech.e_psi_lon.ore_crops
 
 import io.github.ayfri.kore.DataPack
 import io.github.ayfri.kore.arguments.components.types.container

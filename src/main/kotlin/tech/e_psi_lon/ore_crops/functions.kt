@@ -1,4 +1,4 @@
-package tech.e_psi_lon
+package tech.e_psi_lon.ore_crops
 
 import java.util.*
 

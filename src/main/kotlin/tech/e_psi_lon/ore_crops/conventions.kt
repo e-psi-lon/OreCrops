@@ -1,7 +1,6 @@
 package tech.e_psi_lon.ore_crops
 
 import io.github.ayfri.kore.DataPack
-import io.github.ayfri.kore.arguments.chatcomponents.text
 import io.github.ayfri.kore.arguments.chatcomponents.textComponent
 import io.github.ayfri.kore.arguments.components.types.profile
 import io.github.ayfri.kore.arguments.types.resources.AdvancementArgument
@@ -9,15 +8,18 @@ import io.github.ayfri.kore.arguments.types.resources.ItemArgument
 import io.github.ayfri.kore.features.advancements.advancement
 import io.github.ayfri.kore.features.advancements.criteria
 import io.github.ayfri.kore.features.advancements.display
+import io.github.ayfri.kore.features.advancements.icon
 import io.github.ayfri.kore.features.advancements.triggers.tick
 import io.github.ayfri.kore.generated.Items
+import kotlin.collections.iterator
 
 fun DataPack.userAdvancement(username: String, advancementParent: AdvancementArgument) = advancement(username.lowercase()) {
 	namespace = "global"
 	parent = advancementParent
-	display(Items.PLAYER_HEAD {
-		profile(username)
-	}) {
+	display(Items.PLAYER_HEAD) {
+		icon(Items.PLAYER_HEAD) {
+			profile(username)
+		}
 		title = textComponent(username)
 		description = textComponent("")
 		showToast = false
@@ -45,7 +47,13 @@ fun DataPack.globalRoot() = advancement("root") {
 fun DataPack.dataPackAdvancement(dataPackNamespace: String, dataPackIcon: ItemArgument, parentAdvancement: AdvancementArgument) = advancement(dataPackNamespace) {
 	namespace = "global"
 	parent = parentAdvancement
-	display(dataPackIcon) {
+	display((dataPackIcon as OreCropItem).material) {
+		icon(dataPackIcon.material, 1) {
+			if (dataPackIcon.components != null)
+				for (component in dataPackIcon.components!!.components) {
+					components[component.key] = component.value
+				}
+		}
 		title = textComponent(name)
 		description = pack.description
 		showToast = false
@@ -63,7 +71,7 @@ fun DataPack.oreCropsConventionAdvancements(itemDatabase: Map<String, OreCropIte
 	advancements.last().parent = AdvancementArgument("root", "global")
 	advancements.last().display?.description = textComponent("The original creator of the datapack.")
 	val currentMaintainer = userAdvancement("e_psi_lon", originalCreator)
-	advancements.last().parent = AdvancementArgument("HackFight", "global")
+	advancements.last().parent = AdvancementArgument("hackfight", "global")
 	return dataPackAdvancement("ore_crops", itemDatabase["DIAMOND_SEEDS"]!!, currentMaintainer).also {
 		advancements.last().parent = AdvancementArgument("e_psi_lon", "global")
 	}

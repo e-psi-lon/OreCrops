@@ -2,6 +2,7 @@ package tech.e_psi_lon.ore_crops
 
 import io.github.ayfri.kore.arguments.chatcomponents.textComponent
 import io.github.ayfri.kore.arguments.colors.Color
+import io.github.ayfri.kore.arguments.colors.color
 import io.github.ayfri.kore.arguments.enums.Relation
 import io.github.ayfri.kore.arguments.scores.ScoreboardCriteria
 import io.github.ayfri.kore.arguments.scores.score
@@ -24,11 +25,11 @@ val LORE = textComponent("Ore Crops", color = Color.BLUE) { italic = true }
 const val PATH = "out"
 
 fun main() {
-	File(PATH).deleteRecursively()
+	File("$PATH/Ore Crops").deleteRecursively()
 	val dataPack = dataPack("Ore Crops") {
 		pack {
 			format = 55
-			description = textComponent("Adds mineral seeds.\n") +
+			description = textComponent("Adds mineral seeds.\n", color = Color.GRAY) +
 					textComponent("Created by e_psi_lon ", color = Color.GOLD) +
 					textComponent("(based on the HackFight data pack)", color = Color.GRAY)
 		}

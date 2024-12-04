@@ -8,6 +8,7 @@ import io.github.ayfri.kore.pack.pack
 import kotlin.io.path.Path
 
 const val NAMESPACE = "ore_crops"
+val LORE = textComponent("Ore Crops", color = Color.BLUE) { italic = true }
 
 fun main() {
 	val dataPack = dataPack("OreCrops") {

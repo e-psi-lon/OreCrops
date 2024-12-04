@@ -3,6 +3,7 @@ package tech.e_psi_lon.ore_crops
 import io.github.ayfri.kore.DataPack
 import io.github.ayfri.kore.arguments.components.types.container
 import io.github.ayfri.kore.arguments.components.types.itemName
+import io.github.ayfri.kore.arguments.components.types.lore
 import io.github.ayfri.kore.arguments.components.types.slot
 import io.github.ayfri.kore.arguments.types.literals.self
 import io.github.ayfri.kore.commands.give
@@ -23,7 +24,6 @@ fun DataPack.orePlantsItems() {
 		Wart(wartMaterial)
 		itemDatabase[wartMaterial.name] = Wart(wartMaterial)
 	}
-	for (customMaterial in arrayOf(""))
 	function("_give_all", NAMESPACE) {
 		val chests = itemDatabase.values.filter { !it.isExternal }.chunked(27).mapIndexed { chestIndex, chunk ->
 			Items.CHEST {

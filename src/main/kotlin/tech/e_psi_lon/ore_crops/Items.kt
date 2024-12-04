@@ -1,7 +1,5 @@
 package tech.e_psi_lon.ore_crops
 
-import io.github.ayfri.kore.arguments.chatcomponents.textComponent
-import io.github.ayfri.kore.arguments.colors.Color
 import io.github.ayfri.kore.arguments.components.ComponentsRemovables
 import io.github.ayfri.kore.arguments.components.types.customData
 import io.github.ayfri.kore.arguments.components.types.itemModel
@@ -16,7 +14,7 @@ abstract class OreCropItem : ItemArgument {
 	override val name: String
 		get() = Items.ITEM_FRAME.name
 	override var components: ComponentsRemovables? = ComponentsRemovables().apply {
-		lore(textComponent("Ore Crops", color= Color.BLUE) { italic=true})
+		lore(LORE)
 		customData {
 			putNbtCompound("smithed") {
 				putNbtCompound("ignore") {

@@ -34,10 +34,8 @@ fun main() {
 		}
 		val itemDatabase = mutableMapOf<String, OreCropItem>()
 		orePlantsItems(itemDatabase)
-		function("1s", NAMESPACE) {
-			schedule(TimeNumber(1.0, TimeType.SECONDS), "$NAMESPACE:1s")
-		}
-		load {
+		oreCropsConventionAdvancements(itemDatabase)
+		load("load", NAMESPACE) {
 			scoreboard {
 				players {
 					add(literal("#$name.loaded"), "load.status", 1)

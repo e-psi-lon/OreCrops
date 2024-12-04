@@ -12,7 +12,7 @@ import io.github.ayfri.kore.generated.Items
 import net.benwoodworth.knbt.put
 import net.benwoodworth.knbt.putNbtCompound
 
-open class OreCropItem : ItemArgument {
+abstract class OreCropItem : ItemArgument {
 	override val name: String
 		get() = Items.ITEM_FRAME.name
 	override var components: ComponentsRemovables? = ComponentsRemovables().apply {
@@ -28,16 +28,15 @@ open class OreCropItem : ItemArgument {
 	}
 	override val namespace: String
 		get() = "minecraft"
-	open val material: ItemArgument
-		get() = this
-	open val isExternal: Boolean
-		get() = false
+	abstract val material: ItemArgument
+	abstract val isExternal: Boolean
 }
 
 
 class Seeds(override val material: ItemArgument, override val isExternal: Boolean = false) : OreCropItem() {
 	val isGem: Boolean
 		get() = material in arrayOf(Items.COAL, Items.DIAMOND, Items.EMERALD, Items.LAPIS_LAZULI, Items.REDSTONE)
+
 	override var components: ComponentsRemovables? = super.components?.apply {
 		val materialName = if (material.name.split("_").size > 1) material.name.split("_")[0] else material.name
 		itemName("${materialName.capitalize()} Seeds")
@@ -46,14 +45,9 @@ class Seeds(override val material: ItemArgument, override val isExternal: Boolea
 }
 
 class Wart(override val material: ItemArgument, override val isExternal: Boolean = false) : OreCropItem() {
-	override var components: ComponentsRemovables? =
-		ComponentsRemovables().apply {
-			val materialName = if (material.name.split("_").size > 1) material.name.split("_")[0] else material.name
-			itemName("${materialName.capitalize()} Wart")
-			itemModel("${materialName.lowercase()}_wart", NAMESPACE)
-
-		}
-	override val namespace: String
-		get() = "minecraft"
-
+	override var components: ComponentsRemovables? = super.components?.apply {
+		val materialName = if (material.name.split("_").size > 1) material.name.split("_")[0] else material.name
+		itemName("${materialName.capitalize()} Wart")
+		itemModel("${materialName.lowercase()}_wart", NAMESPACE)
+	}
 }

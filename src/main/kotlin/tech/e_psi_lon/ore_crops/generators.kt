@@ -24,9 +24,10 @@ fun DataPack.orePlantsItems(itemDatabase: MutableMap<String, OreCropItem>) {
 		itemDatabase[wartMaterial.name] = Wart(wartMaterial)
 	}
 	function("_give_all", NAMESPACE) {
-		val chests = itemDatabase.values.filter { !it.isExternal }.chunked(27).mapIndexed { chestIndex, chunk ->
+		val chests = itemDatabase.values.chunked(27).mapIndexed { chestIndex, chunk ->
 			Items.CHEST {
-				itemName("Chest ${chestIndex + 1}/${itemDatabase.values.filter { !it.isExternal }.chunked(27).size}")
+				itemName("Chest ${chestIndex + 1}/${itemDatabase.values.chunked(27).size}")
+				lore(LORE)
 				container {
 					chunk.forEachIndexed { index, oreCropItem ->
 						slot(index,

@@ -17,11 +17,11 @@ import io.github.ayfri.kore.generated.Items
 fun DataPack.orePlantsItems(itemDatabase: MutableMap<String, OreCropItem>) {
 	for (seedMaterial in arrayOf(Items.COAL, Items.IRON_INGOT, Items.COPPER_INGOT, Items.GOLD_INGOT, Items.DIAMOND, Items.EMERALD, Items.LAPIS_LAZULI, Items.REDSTONE)) {
 		val seeds = Seeds(seedMaterial)
-		itemDatabase[seedMaterial.name] = seeds
+		itemDatabase["${seeds.materialName}_SEEDS"] = seeds
 	}
 	for (wartMaterial in arrayOf(Items.NETHERITE_SCRAP, Items.QUARTZ)) {
-		Wart(wartMaterial)
-		itemDatabase[wartMaterial.name] = Wart(wartMaterial)
+		val wart = Wart(wartMaterial)
+		itemDatabase["${wart.materialName}_WART"] = wart
 	}
 	function("_give_all", NAMESPACE) {
 		val chests = itemDatabase.values.chunked(27).mapIndexed { chestIndex, chunk ->
@@ -45,7 +45,7 @@ fun DataPack.orePlantsItems(itemDatabase: MutableMap<String, OreCropItem>) {
 		}
 	}
 	itemDatabase.filter { !it.value.isExternal }.forEach { (key, value) ->
-		val keyName = if (key.split("_").size > 1) key.split("_")[0].lowercase() else key.lowercase()
+		val keyName = key.split(" ")[0].lowercase()
 		lootTable("i/$keyName") {
 			namespace = NAMESPACE
 			pool {

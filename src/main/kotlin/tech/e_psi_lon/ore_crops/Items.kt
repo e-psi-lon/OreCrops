@@ -28,6 +28,8 @@ abstract class OreCropItem : ItemArgument {
 		get() = "minecraft"
 	abstract val material: ItemArgument
 	abstract val isExternal: Boolean
+	val materialName: String
+		get() = if (material.name.split("_").size > 1) material.name.split("_")[0] else material.name
 }
 
 
@@ -36,7 +38,6 @@ class Seeds(override val material: ItemArgument, override val isExternal: Boolea
 		get() = material in arrayOf(Items.COAL, Items.DIAMOND, Items.EMERALD, Items.LAPIS_LAZULI, Items.REDSTONE)
 
 	override var components: ComponentsRemovables? = super.components?.apply {
-		val materialName = if (material.name.split("_").size > 1) material.name.split("_")[0] else material.name
 		itemName("${materialName.capitalize()} Seeds")
 		itemModel("${materialName.lowercase()}_seeds", NAMESPACE)
 	}
@@ -44,7 +45,6 @@ class Seeds(override val material: ItemArgument, override val isExternal: Boolea
 
 class Wart(override val material: ItemArgument, override val isExternal: Boolean = false) : OreCropItem() {
 	override var components: ComponentsRemovables? = super.components?.apply {
-		val materialName = if (material.name.split("_").size > 1) material.name.split("_")[0] else material.name
 		itemName("${materialName.capitalize()} Wart")
 		itemModel("${materialName.lowercase()}_wart", NAMESPACE)
 	}

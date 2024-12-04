@@ -14,8 +14,7 @@ import io.github.ayfri.kore.features.loottables.*
 import io.github.ayfri.kore.functions.function
 import io.github.ayfri.kore.generated.Items
 
-fun DataPack.orePlantsItems() {
-	val itemDatabase = mutableMapOf<String, OreCropItem>()
+fun DataPack.orePlantsItems(itemDatabase: MutableMap<String, OreCropItem>) {
 	for (seedMaterial in arrayOf(Items.COAL, Items.IRON_INGOT, Items.COPPER_INGOT, Items.GOLD_INGOT, Items.DIAMOND, Items.EMERALD, Items.LAPIS_LAZULI, Items.REDSTONE)) {
 		val seeds = Seeds(seedMaterial)
 		itemDatabase[seedMaterial.name] = seeds

@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
+    application
 }
 
 group = "tech.e_psi_lon"
@@ -22,4 +23,8 @@ kotlin {
     compilerOptions {
         freeCompilerArgs.add("-Xcontext-receivers")
     }
+}
+
+application {
+    mainClass.set("tech.e_psi_lon.ore_crops.MainKt")
 }

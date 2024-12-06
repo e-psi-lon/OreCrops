@@ -49,10 +49,7 @@ fun DataPack.dataPackAdvancement(dataPackNamespace: String, dataPackIcon: ItemAr
 	parent = parentAdvancement
 	display((dataPackIcon as OreCropItem).material) {
 		icon(dataPackIcon.material, 1) {
-			if (dataPackIcon.components != null)
-				for (component in dataPackIcon.components!!.components) {
-					components[component.key] = component.value
-				}
+			copyFrom(dataPackIcon)
 		}
 		title = textComponent(name)
 		description = pack.description

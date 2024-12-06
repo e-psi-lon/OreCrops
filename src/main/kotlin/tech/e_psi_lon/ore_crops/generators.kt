@@ -54,9 +54,7 @@ fun DataPack.orePlantsItems(itemDatabase: MutableMap<String, OreCropItem>) {
 					setItem(Items.entries.first { it.name == value.name })
 					value.components?.let { defaultComponents ->
 						setComponents {
-							for (component in defaultComponents.components) {
-								components[component.key] = component.value
-							}
+							copyFrom(defaultComponents)
  						}
 					}
 				}

@@ -38,7 +38,10 @@ fun main() {
 		configuration {
 			prettyPrint = true
 			prettyPrintIndent = "\t"
+			generatedFunctionsFolder = "generated"
 		}
+
+
 		val itemDatabase = mutableMapOf<String, OreCropItem>()
 		orePlantsItems(itemDatabase)
 		oreCropsConventionAdvancements(itemDatabase)
@@ -55,7 +58,7 @@ fun main() {
 				}
 			}
 			tellraw(allPlayers { tag = "convention.debug" }, textComponent("[",  color = Color.WHITE) +
-					textComponent(name, color = Color.GOLD ) +
+					textComponent(this@dataPack.name, color = Color.GOLD ) +
 					textComponent("] (re)loaded.", color = Color.WHITE)
 			)
 

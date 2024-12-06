@@ -1,10 +1,12 @@
 [versions]
 kotlin = "2.1.0"
-kore = "1.21.0-24w39a"
+kore = "1.21.2-1.21.2-pre1"
+kotlinx-serialization-json = "1.7.3"
 
 [libraries]
 kore = {group="io.github.ayfri.kore", name="kore", version.ref="kore"}
-
+kotlinx-serialization-json = {group="org.jetbrains.kotlinx", name="kotlinx-serialization-json", version.ref="kotlinx-serialization-json"}
 
 [plugins]
 kotlin-jvm = {id="org.jetbrains.kotlin.jvm", version.ref="kotlin"}
+kotlinx-serialization = {id="org.jetbrains.kotlin.plugin.serialization", version.ref="kotlin"}

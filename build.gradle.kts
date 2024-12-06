@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlinx.serialization)
     application
 }
 
@@ -13,6 +14,7 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     implementation(libs.kore)
+    implementation(libs.kotlinx.serialization.json)
 }
 
 tasks.test {

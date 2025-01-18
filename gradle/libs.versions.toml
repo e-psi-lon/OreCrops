@@ -4,10 +4,9 @@ kore = "1.24.0-1.21.4"
 kotlinx-serialization-json = "1.7.3"
 
 [libraries]
-kore = {group="io.github.ayfri.kore", name="kore", version.ref="kore"}
-kotlinx-serialization-json = {group="org.jetbrains.kotlinx", name="kotlinx-serialization-json", version.ref="kotlinx-serialization-json"}
 kore = { group="io.github.ayfri.kore", name="kore", version.ref="kore" }
 kotlinx-serialization-json = { group="org.jetbrains.kotlinx", name="kotlinx-serialization-json", version.ref="kotlinx-serialization-json" }
+kotter = { group="com.varabyte.kotter", name="kotter-jvm", version.ref="kotter" }
 
 [plugins]
 kotlin-jvm = { id="org.jetbrains.kotlin.jvm", version.ref="kotlin" }

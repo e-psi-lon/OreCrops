@@ -12,7 +12,7 @@ import net.benwoodworth.knbt.putNbtCompound
 
 abstract class OreCropItem : ItemArgument {
 	override val name: String
-		get() = Items.ITEM_FRAME.name
+		get() = Items.ITEM_FRAME.name.lowercase()
 	override var components: ComponentsRemovables? = ComponentsRemovables().apply {
 		lore(LORE)
 		customData {

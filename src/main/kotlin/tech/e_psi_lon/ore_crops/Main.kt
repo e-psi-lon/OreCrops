@@ -2,7 +2,6 @@ package tech.e_psi_lon.ore_crops
 
 import io.github.ayfri.kore.arguments.chatcomponents.textComponent
 import io.github.ayfri.kore.arguments.colors.Color
-import io.github.ayfri.kore.arguments.colors.color
 import io.github.ayfri.kore.arguments.enums.Relation
 import io.github.ayfri.kore.arguments.scores.ScoreboardCriteria
 import io.github.ayfri.kore.arguments.scores.score
@@ -22,16 +21,18 @@ import kotlin.io.path.Path
 
 const val NAMESPACE = "ore_crops"
 val LORE = textComponent("Ore Crops", color = Color.BLUE) { italic = true }
-const val PATH = "out"
+const val PATH = "/mnt/shared/Minecraft/instances/1.21.4/.minecraft/saves/ore_crops/datapacks/"
+
 
 fun main() {
 	File("$PATH/Ore Crops").deleteRecursively()
 	val dataPack = dataPack("Ore Crops") {
 		pack {
 			format = 55
-			description = textComponent("Adds mineral seeds.\n", color = Color.GRAY) +
-					textComponent("Created by e_psi_lon ", color = Color.GOLD) +
-					textComponent("(based on the HackFight data pack)", color = Color.GRAY)
+			description = textComponent("Adds mineral seeds.\nCreated by ", color = Color.GRAY) +
+					textComponent("HackFight", color = Color.GOLD) +
+					textComponent(" (Updated to 1.21.4 by ", color = Color.GRAY) +
+					textComponent("e_psi_lon", color = Color.GOLD) + textComponent(")", color = Color.GRAY)
 		}
 		path = Path(PATH)
 

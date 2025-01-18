@@ -11,6 +11,7 @@ import io.github.ayfri.kore.data.item.ItemStack
 import io.github.ayfri.kore.features.itemmodifiers.functions.setComponents
 import io.github.ayfri.kore.features.itemmodifiers.functions.setItem
 import io.github.ayfri.kore.features.loottables.*
+import io.github.ayfri.kore.features.loottables.entries.item
 import io.github.ayfri.kore.functions.function
 import io.github.ayfri.kore.generated.Items
 
@@ -31,10 +32,7 @@ fun DataPack.orePlantsItems(itemDatabase: MutableMap<String, OreCropItem>) {
 				container {
 					chunk.forEachIndexed { index, oreCropItem ->
 						slot(index,
-							ItemStack(oreCropItem.name.lowercase(),
-								count = 1,
-								components = oreCropItem.components?.toComponents()
-							)
+							ItemStack(oreCropItem, 1)
 						)
 					}
 				}
@@ -49,14 +47,17 @@ fun DataPack.orePlantsItems(itemDatabase: MutableMap<String, OreCropItem>) {
 		lootTable("i/$keyName") {
 			namespace = NAMESPACE
 			pool {
+				entries {
+					type = LootTableType.GENERIC
+					item(Items.entries.first { it.name.lowercase() == value.name })
+					functions {
+						setComponents { copyFrom(value) }
+					}
+				}
 				type = LootTableType.GENERIC
 				functions {
-					setItem(Items.entries.first { it.name == value.name })
-					value.components?.let { defaultComponents ->
-						setComponents {
-							copyFrom(defaultComponents)
- 						}
-					}
+					setItem(Items.entries.first { it.name.lowercase() == value.name })
+					setComponents { copyFrom(value) }
 				}
 			}
 		}
@@ -64,9 +65,9 @@ fun DataPack.orePlantsItems(itemDatabase: MutableMap<String, OreCropItem>) {
 		lootTable("crop/$keyName") {
 			namespace = NAMESPACE
 			pool {
-				type = LootTableType.GENERIC
-				functions {
-					setItem(value.material)
+				entries {
+					type = LootTableType.GENERIC
+					this.item(value.material)
 				}
 			}
 		}

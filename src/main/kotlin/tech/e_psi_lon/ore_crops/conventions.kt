@@ -11,7 +11,6 @@ import io.github.ayfri.kore.features.advancements.display
 import io.github.ayfri.kore.features.advancements.icon
 import io.github.ayfri.kore.features.advancements.triggers.tick
 import io.github.ayfri.kore.generated.Items
-import kotlin.collections.iterator
 
 fun DataPack.userAdvancement(username: String, advancementParent: AdvancementArgument) = advancement(username.lowercase()) {
 	namespace = "global"

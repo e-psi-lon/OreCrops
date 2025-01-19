@@ -6,16 +6,21 @@ import io.github.ayfri.kore.arguments.colors.Color
 import io.github.ayfri.kore.arguments.enums.Relation
 import io.github.ayfri.kore.arguments.scores.ScoreboardCriteria
 import io.github.ayfri.kore.arguments.scores.score
+import io.github.ayfri.kore.arguments.types.literals.allEntities
 import io.github.ayfri.kore.arguments.types.literals.allPlayers
 import io.github.ayfri.kore.arguments.types.literals.literal
+import io.github.ayfri.kore.arguments.types.literals.self
 import io.github.ayfri.kore.arguments.types.resources.FunctionArgument
+import io.github.ayfri.kore.commands.advancement
 import io.github.ayfri.kore.commands.execute.execute
 import io.github.ayfri.kore.commands.scoreboard.scoreboard
+import io.github.ayfri.kore.commands.tag
 import io.github.ayfri.kore.commands.tellraw
 import io.github.ayfri.kore.configuration
 import io.github.ayfri.kore.dataPack
 import io.github.ayfri.kore.functions.load
 import io.github.ayfri.kore.functions.tick
+import io.github.ayfri.kore.generated.EntityTypes
 import io.github.ayfri.kore.pack.pack
 import java.io.File
 import kotlin.io.path.Path
@@ -60,6 +65,20 @@ fun main() {
 		val itemDatabase = mutableMapOf<String, OreCropItem>()
 		orePlantsItems(itemDatabase)
 		oreCropsConventionAdvancements(itemDatabase)
+		oreCropsAdvancements(itemDatabase)
+		val placeMain = placeMain(itemDatabase)
+		placeSeed { advancement ->
+			tag(self()) { add("ore_crops.placer") }
+			advancement { revoke(self(), advancement) }
+			execute {
+				asTarget(allEntities {
+					type = EntityTypes.ITEM_FRAME
+					tag = "ore_crops.to_place"
+				})
+				at(self())
+			}
+			tag(self()) { remove("ore_crops.placer") }
+		}
 		load("load", NAMESPACE) {
 			scoreboard {
 				players {

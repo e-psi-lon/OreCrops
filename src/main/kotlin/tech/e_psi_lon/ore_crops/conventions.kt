@@ -5,7 +5,6 @@ import io.github.ayfri.kore.arguments.chatcomponents.textComponent
 import io.github.ayfri.kore.arguments.chatcomponents.translatedTextComponent
 import io.github.ayfri.kore.arguments.components.types.profile
 import io.github.ayfri.kore.arguments.types.resources.AdvancementArgument
-import io.github.ayfri.kore.arguments.types.resources.ItemArgument
 import io.github.ayfri.kore.features.advancements.advancement
 import io.github.ayfri.kore.features.advancements.criteria
 import io.github.ayfri.kore.features.advancements.display
@@ -44,11 +43,11 @@ fun DataPack.globalRoot() = advancement("root") {
 	}
 }
 
-fun DataPack.dataPackAdvancement(dataPackNamespace: String, dataPackIcon: ItemArgument, parentAdvancement: AdvancementArgument) = advancement(dataPackNamespace) {
+fun DataPack.dataPackAdvancement(dataPackNamespace: String, dataPackIcon: OreCropItem, parentAdvancement: AdvancementArgument) = advancement(dataPackNamespace) {
 	namespace = "global"
 	parent = parentAdvancement
-	display((dataPackIcon as OreCropItem).material) {
-		icon(dataPackIcon.material, 1) {
+	display(dataPackIcon.material) {
+		icon(Items.ITEM_FRAME, 1) {
 			copyFrom(dataPackIcon)
 		}
 		title = textComponent(name)

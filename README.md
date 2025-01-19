@@ -17,11 +17,20 @@ Transform your Minecraft resource gathering with farmable mineral crops! This da
 - Built-in advancements to track progress
 - Perfect for both single-player and multi-player
 
+
+## Installation & Download 📥
+> [!NOTE]
+> The datapack is not released yet. A download link will be added once the first release is out
+
+1. Download the latest release [here](https://github.com/e-psi-lon/OreCrops/releases/latest)
+2. Place the datapack in your world's `datapacks` folder
+3. Reload your world (`/reload`) or close and reopen it
+
+
 ### Compatibility Status 🔧
 > [!IMPORTANT]
 > The datapack is currently in development and testing phase.
 > Compatibility with other datapacks and resource packs will be documented here once tested.
-
 
 ### Available Crops 🌱
 
@@ -56,16 +65,6 @@ Support planned for:
 2. Drop a wheat seed or nether wart
 3. Drop a block of your desired mineral (or 2 netherite ingots for netherite wart)
 4. The mineral seed/wart will spawn
-
-
-## Installation & Download 📥
-> [!NOTE]
-> The datapack is not released yet. Watch this space for updates!
-
-1. Download the latest release
-2. Place the datapack in your world's `datapacks` folder
-3. Reload your world (`/reload`) or close and reopen it
-
 
 ## Requirements 📋
 

@@ -38,14 +38,14 @@ class Seeds(override val material: ItemArgument, override val isExternal: Boolea
 		get() = material in arrayOf(Items.COAL, Items.DIAMOND, Items.EMERALD, Items.LAPIS_LAZULI, Items.REDSTONE)
 
 	override var components: ComponentsRemovables? = super.components?.apply {
-		itemName("${materialName.capitalize()} Seeds")
+		itemName(translatedTextComponent("$NAMESPACE.items.${materialName.lowercase()}_seed", fallback = "${materialName.capitalize()} Seed"))
 		itemModel("${materialName.lowercase()}_seeds", NAMESPACE)
 	}
 }
 
 class Wart(override val material: ItemArgument, override val isExternal: Boolean = false) : OreCropItem() {
 	override var components: ComponentsRemovables? = super.components?.apply {
-		itemName("${materialName.capitalize()} Wart")
+		itemName(translatedTextComponent("$NAMESPACE.items.${materialName.lowercase()}_wart", fallback = "${materialName.capitalize()} Wart"))
 		itemModel("${materialName.lowercase()}_wart", NAMESPACE)
 	}
 }

@@ -1,6 +1,7 @@
 package tech.e_psi_lon.ore_crops
 
 import io.github.ayfri.kore.arguments.chatcomponents.textComponent
+import io.github.ayfri.kore.arguments.chatcomponents.translatedTextComponent
 import io.github.ayfri.kore.arguments.colors.Color
 import io.github.ayfri.kore.arguments.enums.Relation
 import io.github.ayfri.kore.arguments.scores.ScoreboardCriteria
@@ -20,7 +21,10 @@ import java.io.File
 import kotlin.io.path.Path
 
 const val NAMESPACE = "ore_crops"
-val LORE = textComponent("Ore Crops", color = Color.BLUE) { italic = true }
+val LORE = translatedTextComponent("$NAMESPACE.lore", fallback = "Ore Crops") {
+	color = Color.BLUE
+	italic = true
+}
 const val PATH = "/mnt/shared/Minecraft/instances/1.21.4/.minecraft/saves/ore_crops/datapacks/"
 
 
@@ -29,9 +33,13 @@ fun main() {
 	val dataPack = dataPack("Ore Crops") {
 		pack {
 			format = 55
-			description = textComponent("Adds mineral seeds.\nCreated by ", color = Color.GRAY) +
+			description = /* textComponent("Adds mineral seeds.\nCreated by ", color = Color.GRAY) +
 					textComponent("HackFight", color = Color.GOLD) +
 					textComponent(" (Updated to 1.21.4 by ", color = Color.GRAY) +
+					textComponent("e_psi_lon", color = Color.GOLD) + textComponent(")", color = Color.GRAY) */
+					translatedTextComponent("$NAMESPACE.description.1", fallback = "Adds mineral seeds.\nCreated by ") { color = Color.GRAY} +
+					textComponent("HackFight", color = Color.GOLD) +
+					translatedTextComponent("$NAMESPACE.description.2", fallback = " (Updated to 1.21.4 by ") { color = Color.GRAY} +
 					textComponent("e_psi_lon", color = Color.GOLD) + textComponent(")", color = Color.GRAY)
 		}
 		path = Path(PATH)
@@ -60,7 +68,7 @@ fun main() {
 			}
 			tellraw(allPlayers { tag = "convention.debug" }, textComponent("[",  color = Color.WHITE) +
 					textComponent(this@dataPack.name, color = Color.GOLD ) +
-					textComponent("] (re)loaded.", color = Color.WHITE)
+					translatedTextComponent("$NAMESPACE.reloaded.", fallback = "] (re)loaded.") { color = Color.WHITE }
 			)
 
 		}

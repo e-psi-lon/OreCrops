@@ -2,6 +2,7 @@ package tech.e_psi_lon.ore_crops
 
 import io.github.ayfri.kore.DataPack
 import io.github.ayfri.kore.arguments.chatcomponents.textComponent
+import io.github.ayfri.kore.arguments.chatcomponents.translatedTextComponent
 import io.github.ayfri.kore.arguments.components.types.profile
 import io.github.ayfri.kore.arguments.types.resources.AdvancementArgument
 import io.github.ayfri.kore.arguments.types.resources.ItemArgument
@@ -65,7 +66,7 @@ fun DataPack.oreCropsConventionAdvancements(itemDatabase: Map<String, OreCropIte
 	val root = globalRoot()
 	val originalCreator = userAdvancement("HackFight", root)
 	advancements.last().parent = AdvancementArgument("root", "global")
-	advancements.last().display?.description = textComponent("The original creator of the datapack.")
+	advancements.last().display?.description = translatedTextComponent("global.hackfight.description", fallback = "The original creator of the datapack.")
 	val currentMaintainer = userAdvancement("e_psi_lon", originalCreator)
 	advancements.last().parent = AdvancementArgument("hackfight", "global")
 	return dataPackAdvancement("ore_crops", itemDatabase["DIAMOND_SEEDS"]!!, currentMaintainer).also {

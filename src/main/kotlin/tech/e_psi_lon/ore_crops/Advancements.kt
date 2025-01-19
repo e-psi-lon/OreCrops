@@ -23,7 +23,7 @@ fun DataPack.oreCropsAdvancements(itemDatabase: MutableMap<String, OreCropItem>)
 	val (renewableMinerals, renewableHell) = baseAdvancements()
 	for (value in itemDatabase.values) {
 		val material = value.material
-		val name = value.materialName
+		val name = value.materialName.lowercase()
 		when (value) {
 			is Seeds -> {
 				advancement("renewable_${name}") {

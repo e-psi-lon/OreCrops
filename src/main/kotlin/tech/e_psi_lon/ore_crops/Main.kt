@@ -3,7 +3,6 @@ package tech.e_psi_lon.ore_crops
 import io.github.ayfri.kore.arguments.chatcomponents.textComponent
 import io.github.ayfri.kore.arguments.chatcomponents.translatedTextComponent
 import io.github.ayfri.kore.arguments.colors.Color
-import io.github.ayfri.kore.arguments.enums.Relation
 import io.github.ayfri.kore.arguments.scores.ScoreboardCriteria
 import io.github.ayfri.kore.arguments.scores.score
 import io.github.ayfri.kore.arguments.types.literals.allEntities
@@ -66,7 +65,9 @@ fun main() {
 		orePlantsItems(itemDatabase)
 		oreCropsConventionAdvancements(itemDatabase)
 		oreCropsAdvancements(itemDatabase)
-		val placeMain = placeMain(itemDatabase)
+		val placeWheat = placeWheat()
+		val placeNether = placeNether()
+		val placeMain = placeMain(itemDatabase, placeWheat, placeNether)
 		placeSeed { advancement ->
 			tag(self()) { add("$NAMESPACE.placer") }
 			advancement { revoke(self(), advancement) }
@@ -76,6 +77,7 @@ fun main() {
 					tag = "$NAMESPACE.to_place"
 				})
 				at(self())
+				run(placeMain)
 			}
 			tag(self()) { remove("$NAMESPACE.placer") }
 		}
@@ -87,8 +89,6 @@ fun main() {
 			}
 			scoreboard {
 				objectives {
-					add("ore_plants.data", ScoreboardCriteria.DUMMY)
-					add("ore_plants.second", ScoreboardCriteria.DUMMY)
 					add("$NAMESPACE.data", ScoreboardCriteria.DUMMY)
 					add("$NAMESPACE.second", ScoreboardCriteria.DUMMY)
 				}
@@ -107,7 +107,7 @@ fun main() {
 			}
 			execute {
 				ifCondition {
-					this.score(literal("#tick"), "$NAMESPACE.second", 20, Relation.GREATER_THAN_OR_EQUAL_TO)
+					score(literal("#tick"), "$NAMESPACE.second") greaterThanOrEqualTo 20
 				}
 				run("second", NAMESPACE) {
 					scoreboard {

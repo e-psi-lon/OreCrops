@@ -68,16 +68,16 @@ fun main() {
 		oreCropsAdvancements(itemDatabase)
 		val placeMain = placeMain(itemDatabase)
 		placeSeed { advancement ->
-			tag(self()) { add("ore_crops.placer") }
+			tag(self()) { add("$NAMESPACE.placer") }
 			advancement { revoke(self(), advancement) }
 			execute {
 				asTarget(allEntities {
 					type = EntityTypes.ITEM_FRAME
-					tag = "ore_crops.to_place"
+					tag = "$NAMESPACE.to_place"
 				})
 				at(self())
 			}
-			tag(self()) { remove("ore_crops.placer") }
+			tag(self()) { remove("$NAMESPACE.placer") }
 		}
 		load("load", NAMESPACE) {
 			scoreboard {
@@ -89,6 +89,8 @@ fun main() {
 				objectives {
 					add("ore_plants.data", ScoreboardCriteria.DUMMY)
 					add("ore_plants.second", ScoreboardCriteria.DUMMY)
+					add("$NAMESPACE.data", ScoreboardCriteria.DUMMY)
+					add("$NAMESPACE.second", ScoreboardCriteria.DUMMY)
 				}
 			}
 			tellraw(allPlayers { tag = "convention.debug" }, textComponent("[",  color = Color.WHITE) +

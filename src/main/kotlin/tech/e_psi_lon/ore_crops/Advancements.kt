@@ -56,7 +56,7 @@ fun DataPack.oreCropsAdvancements(itemDatabase: MutableMap<String, OreCropItem>)
 						title = if (material == Items.NETHERITE_SCRAP) translatedTextComponent("$NAMESPACE.advancements.a_source_of_netherite.name", fallback = "A source of netherite.") else
 							translatedTextComponent("$NAMESPACE.advancements.renewable_$name.name", fallback = "Renewable $name ?")
 						frame = if (material == Items.NETHERITE_SCRAP) AdvancementFrameType.CHALLENGE else AdvancementFrameType.TASK
-						description = if (material == Items.NETHERITE_SCRAP) translatedTextComponent("ore_crops.advancements.a_source_of_netherite.description", fallback = "Build a netherite wart with a nether wart and two netherite ingots.") else
+						description = if (material == Items.NETHERITE_SCRAP) translatedTextComponent("$NAMESPACE.advancements.a_source_of_netherite.description", fallback = "Build a netherite wart with a nether wart and two netherite ingots.") else
 								translatedTextComponent("$NAMESPACE.advancements.renewable_$name.description", fallback = "Make an infinite $name generator.")
 						showToast = true
 						announceToChat = true
@@ -117,7 +117,7 @@ fun DataPack.placeSeed(onPlace: Function.(AdvancementArgument) -> Unit) {
 							item(Items.ITEM_FRAME)
 							predicates {
 								customData {
-									putNbtCompound("ore_crops") {
+									putNbtCompound(NAMESPACE) {
 										put("seed", true)
 									}
 								}

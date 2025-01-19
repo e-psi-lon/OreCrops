@@ -68,7 +68,7 @@ fun DataPack.oreCropsConventionAdvancements(itemDatabase: Map<String, OreCropIte
 	advancements.last().display?.description = translatedTextComponent("global.hackfight.description", fallback = "The original creator of the datapack.")
 	val currentMaintainer = userAdvancement("e_psi_lon", originalCreator)
 	advancements.last().parent = AdvancementArgument("hackfight", "global")
-	return dataPackAdvancement("ore_crops", itemDatabase["DIAMOND_SEEDS"]!!, currentMaintainer).also {
+	return dataPackAdvancement(NAMESPACE, itemDatabase["DIAMOND_SEEDS"]!!, currentMaintainer).also {
 		advancements.last().parent = AdvancementArgument("e_psi_lon", "global")
 	}
 }

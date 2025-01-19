@@ -22,12 +22,12 @@ abstract class OreCropItem : ItemArgument {
 			put("Fixed", true)
 			put("Silent", true)
 			putNbtList("Tags") {
-				add("ore_crops.to_place")
+				add("$NAMESPACE.to_place")
 			}
 
 		}
 		customData {
-			putNbtCompound("ore_crops") {
+			putNbtCompound(NAMESPACE) {
 				put("seed", true)
 			}
 			putNbtCompound("smithed") {
@@ -58,8 +58,8 @@ class Seeds(override val material: ItemArgument, override val isExternal: Boolea
 		val superEntityData = super.components?.components?.values?.filterIsInstance<EntityDataComponent>()?.first()?.data?.toMutableNbtCompound() ?: mutableNbt()
 		val newEntityData = superEntityData.apply {
 			val temp = this["Tags"]?.nbtList<NbtString>()?.toMutableList()?.apply {
-				add(NbtString("ore_crops.${materialName.lowercase()}_wheat"))
-			}?.toTypedArray()?.map { it.value }?.let { nbtListOf(*it.toTypedArray()) } ?: nbtListOf("ore_crops.${materialName.lowercase()}_wheat")
+				add(NbtString("$NAMESPACE.${materialName.lowercase()}_wheat"))
+			}?.toTypedArray()?.map { it.value }?.let { nbtListOf(*it.toTypedArray()) } ?: nbtListOf("$NAMESPACE.${materialName.lowercase()}_wheat")
 			this["Tags"] = temp
 		}
 		entityData(newEntityData.toNbtCompound())
@@ -74,8 +74,8 @@ class Wart(override val material: ItemArgument, override val isExternal: Boolean
 		val superEntityData = super.components?.components?.values?.filterIsInstance<EntityDataComponent>()?.first()?.data?.toMutableNbtCompound() ?: mutableNbt()
 		val newEntityData = superEntityData.apply {
 			val temp = this["Tags"]?.nbtList<NbtString>()?.toMutableList()?.apply {
-				add(NbtString("ore_crops.${materialName.lowercase()}_wart"))
-			}?.toTypedArray()?.map { it.value }?.let { nbtListOf(*it.toTypedArray()) } ?: nbtListOf("ore_crops.${materialName.lowercase()}_wart")
+				add(NbtString("$NAMESPACE.${materialName.lowercase()}_wart"))
+			}?.toTypedArray()?.map { it.value }?.let { nbtListOf(*it.toTypedArray()) } ?: nbtListOf("$NAMESPACE.${materialName.lowercase()}_wart")
 			this["Tags"] = temp
 		}
 		entityData(newEntityData.toNbtCompound())

@@ -29,6 +29,12 @@ const val PATH = "/mnt/shared/Minecraft/instances/1.21.4/.minecraft/saves/ore_cr
 
 
 fun main() {
+	/*
+	var mechanization = false
+	var simplEnergy = false
+	println("Mechanization Support : $mechanization")
+	println("SimplEnergy Support : $simplEnergy")
+	*/
 	File("$PATH/Ore Crops").deleteRecursively()
 	val dataPack = dataPack("Ore Crops") {
 		pack {

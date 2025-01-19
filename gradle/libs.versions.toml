@@ -2,6 +2,7 @@
 kotlin = "2.1.0"
 kore = "1.24.0-1.21.4"
 kotlinx-serialization-json = "1.7.3"
+kotter = "1.2.1"
 
 [libraries]
 kore = { group="io.github.ayfri.kore", name="kore", version.ref="kore" }

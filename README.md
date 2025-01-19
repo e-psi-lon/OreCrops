@@ -15,7 +15,7 @@ Transform your Minecraft resource gathering with farmable mineral crops! This da
 - Overworld minerals grow like wheat
 - Nether resources grow like nether wart
 - Built-in advancements to track progress
-- Perfect for both single-player and SMP
+- Perfect for both single-player and multi-player
 
 ### Compatibility Status 🔧
 > [!IMPORTANT]
@@ -79,7 +79,7 @@ Feel free to:
 
 ## Credits 👥
 
-- Original Creator: HackFight
+- Original Datapack by HackFight available here : [Planet Minecraft Ore Crops Datapack](https://www.planetminecraft.com/data-pack/ore-crops/)
 - Current Maintainer: e_psi_lon
 - Built with [Kore](https://github.com/Ayfri/Kore)
 

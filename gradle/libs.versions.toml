@@ -3,11 +3,13 @@ kotlin = "2.1.0"
 kore = "1.24.0-1.21.4"
 kotlinx-serialization-json = "1.7.3"
 kotter = "1.2.1"
+packed = "1.0.3"
 
 [libraries]
 kore = { group="io.github.ayfri.kore", name="kore", version.ref="kore" }
 kotlinx-serialization-json = { group="org.jetbrains.kotlinx", name="kotlinx-serialization-json", version.ref="kotlinx-serialization-json" }
 kotter = { group="com.varabyte.kotter", name="kotter-jvm", version.ref="kotter" }
+packed = { group="net.radstevee.packed", name="packed-core", version.ref="packed" }
 
 [plugins]
 kotlin-jvm = { id="org.jetbrains.kotlin.jvm", version.ref="kotlin" }

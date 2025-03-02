@@ -21,6 +21,10 @@ import io.github.ayfri.kore.functions.load
 import io.github.ayfri.kore.functions.tick
 import io.github.ayfri.kore.generated.EntityTypes
 import io.github.ayfri.kore.pack.pack
+import net.radstevee.packed.core.asset.impl.ResourceAssetResolutionStrategy
+import net.radstevee.packed.core.item.itemModel
+import net.radstevee.packed.core.pack.PackFormat
+import net.radstevee.packed.core.pack.ResourcePackBuilder.Companion.resourcePack
 import java.io.File
 import kotlin.io.path.Path
 
@@ -29,10 +33,11 @@ val LORE = translatedTextComponent("$NAMESPACE.lore", fallback = "Ore Crops") {
 	color = Color.BLUE
 	italic = true
 }
-const val PATH = "/mnt/shared/Minecraft/instances/1.21.4/.minecraft/saves/ore_crops/datapacks/"
+const val PATH = "/mnt/shared/Minecraft/instances/1.21.4/.minecraft/saves/ore_crops/datapacks"
 
 
 fun main() {
+	val useZipFile = false
 	/*
 	var mechanization = false
 	var simplEnergy = false
@@ -120,5 +125,18 @@ fun main() {
 			}
 		}
 	}
-	dataPack.generate()
+	val resourcePack = resourcePack {
+		meta {
+			format = PackFormat.V1_21_4
+			description = LORE.toJsonString()
+		}
+		assetResolutionStrategy = ResourceAssetResolutionStrategy(this::class.java)
+	}
+	if (useZipFile) {
+		dataPack.generateZip()
+		resourcePack.createZip(File("$PATH/../../../resourcepacks/Ore Crops.zip"))
+	} else {
+		dataPack.generate()
+		resourcePack.save(true)
+	}
 }

@@ -14,7 +14,7 @@ fun String.capitalize() = // La premiere lettre en majuscule, le reste en minusc
 context(Function)
 fun Execute.run(namespace: String, block: Function.() -> Command): FunctionArgument {
 	val function = Function("", "", "", datapack).apply { block() }
-	val name = "generated_${hashCode()}"
+	val name = "generated_${function.hashCode()}"
 	val generatedFunction = datapack.generatedFunction(name, namespace) { block() }
 	if (generatedFunction.name == name && datapack.configuration.generateCommentOfGeneratedFunctionCall) comment("Generated function ${generatedFunction.asString()}")
 	run(generatedFunction)

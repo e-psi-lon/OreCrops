@@ -8,12 +8,14 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    maven("https://maven.radsteve.net/public")
 }
 
 dependencies {
     testImplementation(kotlin("test"))
     implementation(libs.kore)
     implementation(libs.kotter)
+    implementation(libs.packed)
 }
 
 tasks.test {
